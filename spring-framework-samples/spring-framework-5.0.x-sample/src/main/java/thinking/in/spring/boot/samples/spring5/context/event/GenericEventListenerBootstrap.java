@@ -9,6 +9,7 @@ import org.springframework.core.ResolvableTypeProvider;
 
 /**
  * 泛型 {@link ApplicationEvent 事件} 监听引导类
+ * <br/> 泛型 {@link ApplicationEvent 事件} 需要实现接口{@link ResolvableTypeProvider}
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see ApplicationEvent
@@ -38,6 +39,10 @@ public class GenericEventListenerBootstrap {
 
 public static class UserEventListener implements ApplicationListener<GenericEvent<User>> {
 
+    /**
+     * @EventListener 可以直接监听事件源对象 {@link User}
+     * @param user
+     */
     @EventListener
     public void onUser(User user) {
         System.out.println("onUser : " + user);

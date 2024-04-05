@@ -43,7 +43,7 @@ public class ApplicationListenerBeanOnCustomEventBootstrap {
 
         @Override
         public void onApplicationEvent(MyApplicationEvent event) {
-            System.out.println(event.getClass().getSimpleName());
+            System.out.println("MyApplicationEvent: " + event.getClass().getSimpleName());
         }
     }
 }

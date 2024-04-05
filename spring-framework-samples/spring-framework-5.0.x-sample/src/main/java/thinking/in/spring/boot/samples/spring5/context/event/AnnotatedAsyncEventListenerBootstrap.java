@@ -2,7 +2,6 @@ package thinking.in.spring.boot.samples.spring5.context.event;
 
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
@@ -23,6 +22,12 @@ public class AnnotatedAsyncEventListenerBootstrap {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         // 注册 异步 @EventListener 类 MyAsyncEventListener
         context.register(MyAsyncEventListener.class);
+
+        // 在@EventListener 类 MyAsyncEventListener中启用异步后，是否后序所有的事件都是异步执行？结论：他们是分开的
+        context.addApplicationListener((event) -> {
+            println(" event : " + event.getClass().getSimpleName());
+        });
+
         println(" Spring 应用上下文正在初始化...");
         // 初始化上下文
         context.refresh();
@@ -35,7 +40,7 @@ public class AnnotatedAsyncEventListenerBootstrap {
 
         @EventListener(ContextRefreshedEvent.class)
         @Async
-        public Boolean ontextRefreshedEvent(ContextRefreshedEvent event) {
+        public Boolean onContextRefreshedEvent(ContextRefreshedEvent event) {
             println(" MyAsyncEventListener : " + event.getClass().getSimpleName());
             return true;
         }

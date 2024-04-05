@@ -26,7 +26,7 @@ import java.util.stream.Stream;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since 1.0.0
  */
-@ComponentScan(basePackages = "") // 扫描默认根包
+@ComponentScan(basePackages = "") // 扫描默认根包, 即引导类（ComponentScanDefaultPackageBootstrap）所在包
 //@ComponentScan(basePackages = "org.springframework") // 扫描 Spring Framework 根包
 public class ComponentScanDefaultPackageBootstrap {
 

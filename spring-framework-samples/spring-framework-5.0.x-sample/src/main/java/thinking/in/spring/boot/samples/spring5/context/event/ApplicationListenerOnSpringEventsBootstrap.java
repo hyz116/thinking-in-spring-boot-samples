@@ -23,7 +23,7 @@ public class ApplicationListenerOnSpringEventsBootstrap {
         System.out.println("创建 Spring 应用上下文 : " + context.getDisplayName());
         // 添加 ApplicationListener 非泛型实现
         context.addApplicationListener(event ->
-                System.out.println(event.getClass().getSimpleName())
+                System.out.println("自定义事件：" + event.getClass().getSimpleName())
         );
 
         // refresh() : 初始化应用上下文
@@ -37,9 +37,9 @@ public class ApplicationListenerOnSpringEventsBootstrap {
         System.out.println("应用上下文已停止启动...");
 
         // start(): 启动应用上下文
-        System.out.println("应用上下文准备启动启动...");
+        System.out.println("应用上下文准备启动...");
         context.start();  // 发布 ContextStartedEvent
-        System.out.println("应用上下文已启动启动...");
+        System.out.println("应用上下文已启动...");
 
         // close() : 关闭应用上下文
         System.out.println("应用上下文准备关闭...");
