@@ -41,6 +41,7 @@
         <module>spring-boot-2.0-samples</module>
         <module>spring-framework-samples</module>
         <module>traditional-samples</module>
+        <module>spring-boot-3.x-samples</module>
     </modules>
 
     <build>
